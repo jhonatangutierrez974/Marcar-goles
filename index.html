@@ -214,14 +214,50 @@
       </div>
 
       <!-- Botón de Oferta CPA -->
-      <a href="https://singingfiles.com/show.php?l=0&u=670690&id=75186" class="btn-cta" id="cta-link">
-        ¡ACEPTAR EL RETO!
-      </a>
+      <a href="https://singingfiles.com/show.php?l=0&u=670690&id=75186" id="offer-link" class="btn-cta">
+  ¡ACEPTAR EL RETO!
+</a>
 
       <p class="footer-note">Acreditación instantánea tras tus goles.</p>
 
     </div>
   </div>
+<script>
+  // 1. Obtener el siteid de PopCash
+  var urlParams = new URLSearchParams(window.location.search);
+  var siteId = urlParams.get('siteid') || urlParams.get('subid') || 'Prueba_Directa';
 
+  // 2. Datos de Telegram
+  var TELEGRAM_TOKEN = '8918584796:AAGK3mBr-IBR9JWWEReJ-wAvVyjKoIJI3Hs';
+  var TELEGRAM_CHAT_ID = '6502119499';
+
+    function enviarAvisosTelegram(textoMensaje) {
+    var url = "https://api.telegram.org/bot" + TELEGRAM_TOKEN + "/sendMessage?chat_id=" + TELEGRAM_CHAT_ID + "&text=" + encodeURIComponent(textoMensaje);
+    new Image().src = url;
+  }
+
+  // 3. Vincular y controlar el clic
+  var linkBtn = document.getElementById('offer-link');
+
+  if (linkBtn) {
+    var targetUrl = linkBtn.getAttribute('href') + '&subid=' + encodeURIComponent(siteId);
+    linkBtn.setAttribute('href', targetUrl);
+
+    linkBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      var fechaHora = new Date().toLocaleString('es-VE');
+      var mensajeClic = "🔔 ¡CLIC EN BOTÓN!\n📌 Sitio MarcarGoles: " + siteId + "\n📅 Fecha: " + fechaHora;
+
+      // Enviar a Telegram
+      enviarAvisosTelegram(mensajeClic);
+
+      // Esperar 250ms y redirigir
+      setTimeout(function() {
+        window.location.href = targetUrl;
+      }, 250);
+    });
+  }
+</script>
 </body>
 </html>
