@@ -31,14 +31,14 @@
       z-index: 1;
     }
 
-    /* Overlay Oscuro */
+    /* Overlay Oscuro muy suave */
     .bg-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.35);
       z-index: 2;
     }
 
@@ -53,18 +53,18 @@
       padding: 10px;
     }
 
-    /* Tarjeta Flotante de Cristal (Proporción exacta del boceto) */
+    /* Tarjeta Flotante: Transparente y poco borrosa para ver el estadio */
     .card {
-      background: rgba(15, 28, 22, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(10, 20, 15, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       border-radius: 18px;
       padding: 18px 14px;
       width: 100%;
       max-width: 340px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
     /* Encabezado */
@@ -81,7 +81,7 @@
 
     .subtitle {
       font-size: 11px;
-      color: #d1d5db;
+      color: #e2e8f0;
       margin-bottom: 10px;
       line-height: 1.2;
     }
@@ -93,7 +93,7 @@
       color: #4ade80;
       margin-bottom: 10px;
       line-height: 1.2;
-      text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
     }
 
     /* Insignia Sin Registro */
@@ -109,23 +109,24 @@
       display: inline-block;
     }
 
-    /* Texto previo a la imagen */
+    /* Texto de incentivo y sorpresa */
     .sub-challenge-text {
       font-size: 11.5px;
-      color: #e2e8f0;
+      color: #f3f4f6;
       margin-bottom: 8px;
-      font-weight: 500;
+      font-weight: 600;
+      line-height: 1.3;
     }
 
-    /* Miniatura más pequeña y compacta como en el boceto */
+    /* Miniatura pequeña y proporcionada */
     .hero-image-box {
       width: 100%;
-      max-width: 170px;
+      max-width: 140px;
       margin: 0 auto 12px auto;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1.5px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
     .hero-image-box img {
@@ -134,17 +135,17 @@
       display: block;
     }
 
-    /* Botón CTA del Boceto */
+    /* Botón CTA Limpio y Potente */
     .btn-cta {
       display: block;
       width: 100%;
       background: #22c55e;
       color: #052e16;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 900;
       text-decoration: none;
       text-transform: uppercase;
-      padding: 12px 8px;
+      padding: 14px 8px;
       border-radius: 10px;
       border: 2px solid #86efac;
       box-shadow: 0 0 16px rgba(34, 197, 94, 0.6);
@@ -195,23 +196,23 @@
       <p class="subtitle">Demuestra tu puntería y participa por recompensas.</p>
 
       <div class="challenge-question">
-        ¿Te crees capaz de marcarle dos goles al arquero? 🥅
+        ¿Te crees capaz de vencer al arquero? 🥅
       </div>
 
       <div class="no-register-badge">
         ⚠️ SIN REGISTRO NI CORREO. SOLO JUEGA.
       </div>
 
-      <p class="sub-challenge-text">Acepta el reto. Solo los mejores lo logran. 👇</p>
+      <p class="sub-challenge-text">Vúevete leyenda, anota y participa por un premio sorpresa. 👇</p>
 
-      <!-- Miniatura Reducida -->
+      <!-- Miniatura -->
       <div class="hero-image-box">
         <img src="Miniatura.jpg" alt="Desafío de Goles">
       </div>
 
       <!-- Botón de Oferta CPA -->
       <a href="https://singingfiles.com/show.php?l=0&u=670690&id=75186" class="btn-cta" id="cta-link">
-        ⚽ ACEPTAR EL RETO<br>Y JUGAR NOW
+        ¡ACEPTAR EL RETO!
       </a>
 
       <p class="footer-note">Acreditación instantánea tras tus goles.</p>
