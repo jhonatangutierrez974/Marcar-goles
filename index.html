@@ -5,23 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>¡Desafío de Penales!</title>
   <style>
-    /* Reset Completo */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body, html {
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
       background-color: #000;
       color: #fff;
     }
 
-    /* Fondo de Estadio - Pantalla Completa */
+    /* Fondo de Estadio a pantalla completa */
     .bg-container {
       position: fixed;
       top: 0;
@@ -32,86 +31,87 @@
       z-index: 1;
     }
 
-    /* Overlay oscuro para legibilidad general */
+    /* Capa oscura sutil para que resalten los textos */
     .bg-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.55);
       z-index: 2;
     }
 
-    /* Contenedor Principal */
+    /* Contenedor principal que organiza todo limpio y vertical */
     .wrapper {
       position: relative;
       z-index: 3;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 10px;
-    }
-
-    /* Tarjeta - Efecto de Cristal Ultra Transparente (Glassmorphism) */
-    .card {
-      background: rgba(20, 30, 25, 0.25); /* Muy transparente */
-      backdrop-filter: blur(5px); /* Desenfoque suave del fondo */
-      -webkit-backdrop-filter: blur(5px);
-      border-radius: 20px;
-      padding: 25px 15px;
-      width: 100%;
-      max-width: 380px;
+      padding: 20px 16px;
       text-align: center;
-      /* Eliminado el borde verde grueso */
+      max-width: 400px;
+      margin: 0 auto;
     }
 
-    /* Estilos de Texto */
+    /* Título Principal */
     h1 {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
       color: #ffffff;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      white-space: nowrap;
     }
 
+    /* Subtítulo */
     .subtitle {
       font-size: 13px;
       color: #d1d5db;
       margin-bottom: 12px;
       line-height: 1.3;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     }
 
+    /* Pregunta Retadora (Exacta al boceto) */
     .challenge-question {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
-      color: #4ade80; /* Verde brillante */
+      color: #4ade80;
       margin-bottom: 12px;
-      line-height: 1.25;
+      line-height: 1.3;
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+      padding: 0 10px;
     }
 
-    /* Badge Sin Registro */
+    /* Insignia Sin Registro (Estilo etiqueta limpia) */
     .no-register-badge {
-      background: rgba(234, 179, 8, 0.15);
+      background: rgba(202, 138, 4, 0.25);
       border: 1px solid #eab308;
       color: #fef08a;
       font-size: 11px;
       font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
       display: inline-block;
+      letter-spacing: 0.3px;
     }
 
-    /* Imagen Central - Integrada */
+    /* Imagen Miniatura Limpia (Sin bordes extraños) */
     .hero-image-box {
       width: 100%;
       max-width: 260px;
-      margin: 0 auto 18px auto;
+      margin: 0 auto 16px auto;
       border-radius: 12px;
       overflow: hidden;
-      /* Eliminado el borde de la imagen */
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
 
     .hero-image-box img {
@@ -120,36 +120,38 @@
       display: block;
     }
 
-    /* Botón CTA - Verde Sólido del Boceto con Animación */
+    /* Botón CTA Verde Fosforescente Animado */
     .btn-cta {
       display: block;
       width: 100%;
-      background: #22c55e; /* Verde sólido */
-      color: #052e16; /* Texto oscuro para contraste */
-      font-size: 17px;
+      background: #22c55e;
+      color: #052e16;
+      font-size: 16px;
       font-weight: 900;
       text-decoration: none;
       text-transform: uppercase;
-      padding: 16px 10px;
+      padding: 15px 12px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+      border: 2px solid #86efac;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.6);
       cursor: pointer;
-      animation: pulse 1.8s infinite; /* Animación de pulso */
+      animation: attentionPulse 1.6s infinite ease-in-out;
+      letter-spacing: 0.5px;
     }
 
     .btn-cta:active {
-      transform: scale(0.98);
-      background: #15803d;
+      transform: scale(0.97);
+      background: #16a34a;
     }
 
-    @keyframes pulse {
+    @keyframes attentionPulse {
       0% {
         transform: scale(1);
         box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
       }
       50% {
         transform: scale(1.03);
-        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.8);
+        box-shadow: 0 6px 25px rgba(34, 197, 94, 0.9);
       }
       100% {
         transform: scale(1);
@@ -157,48 +159,47 @@
       }
     }
 
-    /* Nota al Pie */
+    /* Nota al pie */
     .footer-note {
-      font-size: 10px;
+      font-size: 11px;
       color: #9ca3af;
-      margin-top: 12px;
+      margin-top: 14px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     }
   </style>
 </head>
 <body>
 
-  <!-- Fondo de Estadio y Overlay -->
+  <!-- Fondo de Estadio y Capa Oscura -->
   <div class="bg-container"></div>
   <div class="bg-overlay"></div>
 
-  <!-- Contenido Central -->
+  <!-- Contenedor Principal Limpio -->
   <div class="wrapper">
-    <div class="card">
-      
-      <h1>⚽ ¡DESAFÍO DE PENALES! ⚽</h1>
-      <p class="subtitle">Demuestra tu puntería y participa por recompensas.</p>
+    
+    <h1>⚽ ¡DESAFÍO DE PENALES! ⚽</h1>
+    <p class="subtitle">Demuestra tu puntería y participa por recompensas.</p>
 
-      <div class="challenge-question">
-        ¿Te crees capaz de lograrlo?
-      </div>
-
-      <div class="no-register-badge">
-        ⚠️ SIN REGISTRO NI CORREO. SOLO JUEGA.
-      </div>
-
-      <!-- Imagen Central -->
-      <div class="hero-image-box">
-        <img src="Miniatura.jpg" alt="Desafío de Goles">
-      </div>
-
-      <!-- Enlace a la Oferta con Botón Animado -->
-      <a href="https://singingfiles.com/show.php?l=0&u=670690&id=75186" class="btn-cta" id="cta-link">
-        ⚽ COMENZAR EL RETO
-      </a>
-
-      <p class="footer-note">Acreditación instantánea tras tus goles.</p>
-
+    <div class="challenge-question">
+      ¿Te crees capaz de marcarle dos goles al arquero? 🥅
     </div>
+
+    <div class="no-register-badge">
+      ⚠️ SIN REGISTRO NI CORREO. SOLO JUEGA.
+    </div>
+
+    <!-- Imagen Central -->
+    <div class="hero-image-box">
+      <img src="Miniatura.jpg" alt="Desafío de Goles">
+    </div>
+
+    <!-- Botón de Oferta CPA -->
+    <a href="https://singingfiles.com/show.php?l=0&u=670690&id=75186" class="btn-cta" id="cta-link">
+      ⚽ ¡ACEPTAR EL RETO Y JUGAR AHORA!
+    </a>
+
+    <p class="footer-note">Acreditación instantánea tras tus goles.</p>
+
   </div>
 
 </body>
