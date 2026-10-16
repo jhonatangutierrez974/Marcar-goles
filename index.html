@@ -212,8 +212,8 @@
         <img src="Miniatura.jpg" alt="Desafío de Goles">
       </div>
 
-      <!-- Botón de Oferta CPA -->
-      <a href="#" id="offer-link" class="btn-cta">
+      <!-- Botón de Oferta OGAds -->
+      <a href="https://trkoffer.net/cl/i/l7vnvd" id="offer-link" class="btn-cta">
         ¡ACEPTAR EL RETO!
       </a>
 
@@ -223,16 +223,16 @@
   </div>
 
 <script>
-  // 1. Detección Inteligente del Dispositivo / Sistema Operativo
+  // 1. Detección Inteligente del Dispositivo / Sistema Operativo (Para reportar en Telegram)
   function detectarDispositivo() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
     
     if (/iPhone|iPad|iPod/i.test(userAgent)) {
-      return { tipo: '🍏 iOS', id: '75187' };
+      return { tipo: '🍏 iOS' };
     } else if (/Android/i.test(userAgent)) {
-      return { tipo: '📱 Android', id: '75186' };
+      return { tipo: '📱 Android' };
     } else {
-      return { tipo: '💻 Desktop', id: '75185' };
+      return { tipo: '💻 Desktop' };
     }
   }
 
@@ -249,15 +249,12 @@
     new Image().src = url;
   }
 
-  // 4. Configurar la Redirección y Notificación Dinámica
+  // 4. Configurar Notificación Dinámica y Redirección a OGAds
   var linkBtn = document.getElementById('offer-link');
 
   if (linkBtn) {
     var equipo = detectarDispositivo();
-    
-    // Construir URL de CPAGrip correspondiente al dispositivo
-    var targetUrl = "https://singingfiles.com/show.php?l=0&u=670690&id=" + equipo.id + "&subid=" + encodeURIComponent(siteId);
-    linkBtn.setAttribute('href', targetUrl);
+    var targetUrl = "https://trkoffer.net/cl/i/l7vnvd";
 
     linkBtn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -265,10 +262,10 @@
       var fechaHora = new Date().toLocaleString('es-VE');
       var mensajeClic = "🔔 ¡CLIC EN BOTÓN!\n📌 Sitio MarcarGoles: " + siteId + "\n📲 Dispositivo: " + equipo.tipo + "\n📅 Fecha: " + fechaHora;
 
-      // Enviar aviso a Telegram
+      // Enviar aviso a Telegram con el tipo de dispositivo detectado
       enviarAvisosTelegram(mensajeClic);
 
-      // Redirigir al usuario tras 250ms
+      // Redirigir al usuario al casillero de OGAds tras 250ms
       setTimeout(function() {
         window.location.href = targetUrl;
       }, 250);
